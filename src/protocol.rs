@@ -14,9 +14,12 @@ use hpke::kex::KeyExchange;
 use hpke::{
     Deserializable, EncappedKey, HpkeError, Kem as KemTrait, OpModeR, OpModeS, Serializable,
 };
-use rand::{CryptoRng, RngCore};
+use rand::{CryptoRng, RngCore, SeedableRng};
 use std::convert::{TryFrom, TryInto};
 use thiserror::Error as ThisError;
+
+use std::slice;
+use libc::size_t;
 
 // Extra info string used by various crypto routines.
 const LABEL_QUERY: &[u8] = b"odoh query";
@@ -732,6 +735,140 @@ fn derive_secrets(
 #[inline]
 fn to_u16(n: usize) -> Result<u16> {
     n.try_into().map_err(|_| Error::InvalidInputLength)
+}
+
+/// Context for C callers.
+#[repr(C)]
+pub struct ODoHContext {
+    config: ObliviousDoHConfig,
+}
+
+/// Cribbed from [this url]
+///
+/// [this url]: https://users.rust-lang.org/t/how-to-return-byte-array-from-rust-function-to-ffi-c/18136/16
+unsafe fn slice_to_malloc_buf (xs: &'_ [u8]) -> Option<*mut u8>
+{
+    use ::core::mem::MaybeUninit as MU;
+
+    let ptr = ::libc::malloc(xs.len());
+    if ptr.is_null() { return None; }
+    let dst = ::core::slice::from_raw_parts_mut(
+        ptr.cast::<MU<u8>>(),
+        xs.len(),
+    );
+    let src = ::core::slice::from_raw_parts(
+        xs.as_ptr().cast::<MU<u8>>(),
+        xs.len(),
+    );
+    dst.copy_from_slice(src);
+    Some(ptr.cast::<u8>())
+}
+
+/// Create a new context.
+#[no_mangle]
+pub extern "C" fn odoh_create_context(ctx: *mut ODoHContext,
+                                      config_bytes: *const u8,
+                                      config_len: size_t) -> bool
+{
+    let mut config_slice: &[u8] = unsafe { slice::from_raw_parts(config_bytes, config_len as usize) };
+    let configs: Result<ObliviousDoHConfigs> = parse(&mut config_slice);
+    if configs.is_err() {
+        return false;
+    }
+
+    let config = configs
+        .unwrap()
+        .into_iter()
+        .next();
+    if config.is_none() {
+        return false;
+    }
+
+    // should probably check for NULL here... :/
+    unsafe { (*ctx).config = config.unwrap().into(); }
+    true
+}
+
+/// Encrypt a query over the C interface.
+#[no_mangle]
+pub extern "C" fn odoh_encrypt_query(enc_query_bytes: *mut *mut u8,
+                                     enc_query_len: *mut size_t,
+                                     secret_bytes: *mut OdohSecret,
+                                     query_bytes: *const u8,
+                                     query_len: size_t,
+                                     ctx: *const ODoHContext) -> bool
+{
+    use rand::rngs::StdRng;
+
+    let mut rng = StdRng::from_entropy();
+    let query_slice: &[u8] = unsafe {
+        slice::from_raw_parts(query_bytes, query_len as usize)
+    };
+    let config = unsafe { &(*ctx).config };
+
+
+    let message = ObliviousDoHMessagePlaintext::new(query_slice, /* padding */ 0);
+    let (enc_message, client_secret) = encrypt_query(&message, &config.contents, &mut rng).unwrap();
+
+    let enc_query_result = compose(&enc_message);
+    if enc_query_result.is_err() {
+        return false;
+    }
+    let enc_query = enc_query_result.unwrap();
+
+    unsafe {
+        let enc_ptr = slice_to_malloc_buf(&enc_query);
+        if enc_ptr.is_none() {
+            return false;
+        }
+
+        *enc_query_bytes = enc_ptr.unwrap().cast::<u8>();
+        *enc_query_len = enc_query.len();
+        *secret_bytes = client_secret;
+    }
+    true
+}
+
+/// Decrypt a query over the C interface.
+#[no_mangle]
+pub extern "C" fn odoh_decrypt_response(resp_bytes: *mut *mut u8,
+                                        resp_len: *mut size_t,
+                                        query_bytes: *const u8,
+                                        query_len: size_t,
+                                        enc_resp_bytes: *const u8,
+                                        enc_resp_len: size_t,
+                                        secret_bytes: *const OdohSecret) -> bool
+{
+    let mut enc_resp_slice: &[u8] = unsafe {
+        slice::from_raw_parts(enc_resp_bytes, enc_resp_len as usize)
+    };
+    let query_slice: &[u8] = unsafe {
+        slice::from_raw_parts(query_bytes, query_len as usize)
+    };
+    let secret = unsafe { *secret_bytes };
+
+    let message = ObliviousDoHMessagePlaintext::new(query_slice, /* padding */ 0);
+    let response_body_result = parse(&mut enc_resp_slice);
+    if response_body_result.is_err() {
+        return false
+    }
+    let response_body = response_body_result.unwrap();
+
+    let response_result = decrypt_response(&message, &response_body, secret);
+    if response_result.is_err() {
+        return false
+    }
+    let response = response_result.unwrap();
+
+    unsafe {
+        let resp_ptr = slice_to_malloc_buf(&response.dns_msg);
+        if resp_ptr.is_none() {
+            return false;
+        }
+        *resp_bytes = resp_ptr.unwrap();
+        *resp_len = response.dns_msg.len();
+    }
+    true
 }
 
 #[cfg(test)]
