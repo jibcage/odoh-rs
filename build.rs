@@ -18,9 +18,9 @@ fn main() {
         ..Default::default()
     };
 
-    cbindgen::generate_with_config(&crate_dir, config)
-      .unwrap()
-      .write_to_file(output_file);
+    if let Ok(b) = cbindgen::generate_with_config(&crate_dir, config) {
+        b.write_to_file(output_file);
+    }
 }
 
 

@@ -19,7 +19,7 @@ use std::convert::{TryFrom, TryInto};
 use thiserror::Error as ThisError;
 
 use std::slice;
-use libc::size_t;
+use libc::{size_t, c_void};
 
 // Extra info string used by various crypto routines.
 const LABEL_QUERY: &[u8] = b"odoh query";
@@ -35,7 +35,8 @@ const AEAD_ID: u16 = 0x0001;
 
 /// For the selected KDF: SHA256
 const KDF_OUTPUT_SIZE: usize = 32;
-const AEAD_KEY_SIZE: usize = 16;
+/// Size of AEAD_KEY
+pub const AEAD_KEY_SIZE: usize = 16;
 const AEAD_NONCE_SIZE: usize = 12;
 const AEAD_TAG_SIZE: usize = 16;
 
@@ -737,21 +738,22 @@ fn to_u16(n: usize) -> Result<u16> {
     n.try_into().map_err(|_| Error::InvalidInputLength)
 }
 
-/// Context for C callers.
-#[repr(C)]
-pub struct ODoHContext {
-    config: ObliviousDoHConfig,
+/// Cribbed from [this url]
+///
+/// [this url]: https://stackoverflow.com/questions/28127165/how-to-convert-struct-to-u8
+unsafe fn any_as_u8_slice<T: Sized>(p: &T) -> &[u8] {
+    ::std::slice::from_raw_parts(
+        (p as *const T) as *const u8,
+        ::std::mem::size_of::<T>(),
+    )
 }
 
 /// Cribbed from [this url]
 ///
 /// [this url]: https://users.rust-lang.org/t/how-to-return-byte-array-from-rust-function-to-ffi-c/18136/16
-unsafe fn slice_to_malloc_buf (xs: &'_ [u8]) -> Option<*mut u8>
-{
+unsafe fn copy_slice_to_ptr(xs: &'_ [u8], ptr: *mut c_void) {
     use ::core::mem::MaybeUninit as MU;
 
-    let ptr = ::libc::malloc(xs.len());
-    if ptr.is_null() { return None; }
     let dst = ::core::slice::from_raw_parts_mut(
         ptr.cast::<MU<u8>>(),
         xs.len(),
@@ -761,12 +763,19 @@ unsafe fn slice_to_malloc_buf (xs: &'_ [u8]) -> Option<*mut u8>
         xs.len(),
     );
     dst.copy_from_slice(src);
+}
+
+unsafe fn slice_to_malloc_buf (xs: &'_ [u8]) -> Option<*mut u8>
+{
+    let ptr = ::libc::malloc(xs.len());
+    if ptr.is_null() { return None; }
+    copy_slice_to_ptr(xs, ptr);
     Some(ptr.cast::<u8>())
 }
 
 /// Create a new context.
 #[no_mangle]
-pub extern "C" fn odoh_create_context(ctx: *mut ODoHContext,
+pub extern "C" fn odoh_create_context(ctx_ptr: *mut *mut c_void,
                                       config_bytes: *const u8,
                                       config_len: size_t) -> bool
 {
@@ -776,16 +785,22 @@ pub extern "C" fn odoh_create_context(ctx: *mut ODoHContext,
         return false;
     }
 
-    let config = configs
+    let maybe_config = configs
         .unwrap()
         .into_iter()
         .next();
-    if config.is_none() {
+    if maybe_config.is_none() {
         return false;
     }
+    let config = maybe_config.unwrap();
 
-    // should probably check for NULL here... :/
-    unsafe { (*ctx).config = config.unwrap().into(); }
+    unsafe {
+        let bytes = any_as_u8_slice(&config);
+        let ptr = libc::malloc(core::mem::size_of::<ObliviousDoHConfig>());
+        copy_slice_to_ptr(bytes, ptr);
+        *ctx_ptr = ptr;
+    }
+
     true
 }
 
@@ -796,7 +811,7 @@ pub extern "C" fn odoh_encrypt_query(enc_query_bytes: *mut *mut u8,
                                      secret_bytes: *mut OdohSecret,
                                      query_bytes: *const u8,
                                      query_len: size_t,
-                                     ctx: *const ODoHContext) -> bool
+                                     ctx: *const c_void) -> bool
 {
     use rand::rngs::StdRng;
 
@@ -804,11 +819,11 @@ pub extern "C" fn odoh_encrypt_query(enc_query_bytes: *mut *mut u8,
     let query_slice: &[u8] = unsafe {
         slice::from_raw_parts(query_bytes, query_len as usize)
     };
-    let config = unsafe { &(*ctx).config };
-
+    let config = ctx.cast::<*const ObliviousDoHConfig>();
+    let contents = unsafe { &(**config).contents };
 
     let message = ObliviousDoHMessagePlaintext::new(query_slice, /* padding */ 0);
-    let (enc_message, client_secret) = encrypt_query(&message, &config.contents, &mut rng).unwrap();
+    let (enc_message, client_secret) = encrypt_query(&message, contents, &mut rng).unwrap();
 
     let enc_query_result = compose(&enc_message);
     if enc_query_result.is_err() {
