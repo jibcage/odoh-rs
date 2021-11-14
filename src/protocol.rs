@@ -19,6 +19,7 @@ use std::convert::{TryFrom, TryInto};
 use thiserror::Error as ThisError;
 
 use std::slice;
+use std::fmt::Write;
 use libc::{size_t, c_void};
 
 // Extra info string used by various crypto routines.
@@ -740,16 +741,6 @@ fn to_u16(n: usize) -> Result<u16> {
 
 /// Cribbed from [this url]
 ///
-/// [this url]: https://stackoverflow.com/questions/28127165/how-to-convert-struct-to-u8
-unsafe fn any_as_u8_slice<T: Sized>(p: &T) -> &[u8] {
-    ::std::slice::from_raw_parts(
-        (p as *const T) as *const u8,
-        ::std::mem::size_of::<T>(),
-    )
-}
-
-/// Cribbed from [this url]
-///
 /// [this url]: https://users.rust-lang.org/t/how-to-return-byte-array-from-rust-function-to-ffi-c/18136/16
 unsafe fn copy_slice_to_ptr(xs: &'_ [u8], ptr: *mut c_void) {
     use ::core::mem::MaybeUninit as MU;
@@ -773,9 +764,36 @@ unsafe fn slice_to_malloc_buf (xs: &'_ [u8]) -> Option<*mut u8>
     Some(ptr.cast::<u8>())
 }
 
+#[derive(Clone, Copy, Debug)]
+#[repr(C)]
+/// Wrapper for ObliviousDohConfigContents that doesn't use Bytes, so it can
+/// safely leave the FFI boundary. There's almost certainly a better way to do this.
+pub struct OdohConfigContext {
+    kem_id: u16,
+    kdf_id: u16,
+    aead_id: u16,
+    // protocol: length prefix
+    public_key: *const u8,
+    public_key_len: size_t,
+}
+
+impl From<OdohConfigContext> for ObliviousDoHConfigContents {
+    fn from(config: OdohConfigContext) -> ObliviousDoHConfigContents {
+        let pubkey_slice: &[u8] = unsafe {
+            slice::from_raw_parts(config.public_key, config.public_key_len as usize)
+        };
+        ObliviousDoHConfigContents {
+            kem_id: config.kem_id,
+            kdf_id: config.kdf_id,
+            aead_id: config.aead_id,
+            public_key: pubkey_slice.into(),
+        }
+    }
+}
+
 /// Create a new context.
 #[no_mangle]
-pub extern "C" fn odoh_create_context(ctx_ptr: *mut *mut c_void,
+pub extern "C" fn odoh_create_context(ctx_ptr: *mut *const OdohConfigContext,
                                       config_bytes: *const u8,
                                       config_len: size_t) -> bool
 {
@@ -792,15 +810,48 @@ pub extern "C" fn odoh_create_context(ctx_ptr: *mut *mut c_void,
     if maybe_config.is_none() {
         return false;
     }
-    let config = maybe_config.unwrap();
+    let config = maybe_config.unwrap().contents;
 
     unsafe {
-        let bytes = any_as_u8_slice(&config);
-        let ptr = libc::malloc(core::mem::size_of::<ObliviousDoHConfig>());
-        copy_slice_to_ptr(bytes, ptr);
+        let pubkey_ptr = slice_to_malloc_buf(&config.public_key);
+        if pubkey_ptr.is_none() {
+            return false;
+        }
+        let ptr = libc::malloc(core::mem::size_of::<OdohConfigContext>())
+            .cast::<OdohConfigContext>();
+        (*ptr).kem_id = config.kem_id;
+        (*ptr).kdf_id = config.kdf_id;
+        (*ptr).aead_id = config.aead_id;
+        (*ptr).public_key = pubkey_ptr.unwrap();
+        (*ptr).public_key_len = config.public_key.len();
         *ctx_ptr = ptr;
     }
 
+    true
+}
+
+/// describe a config object. used for debugging.
+#[no_mangle]
+pub extern "C" fn odoh_describe_config(ctx: *const OdohConfigContext,
+                                       out: *mut *mut u8,
+                                       len: *mut size_t) -> bool
+{
+    let mut str_out: String = "".to_string();
+    let config: ObliviousDoHConfigContents = unsafe { (*ctx).into() };
+    let result = write!(str_out, "config: {:?}", config);
+    if result.is_err() {
+        return false;
+    }
+    let count = str_out.len();
+
+    unsafe {
+        let out_ptr = slice_to_malloc_buf(&str_out.as_bytes());
+        if out_ptr.is_none() {
+            return false;
+        }
+        *out = out_ptr.unwrap().cast::<u8>();
+        *len = count;
+    }
     true
 }
 
@@ -811,7 +862,7 @@ pub extern "C" fn odoh_encrypt_query(enc_query_bytes: *mut *mut u8,
                                      secret_bytes: *mut OdohSecret,
                                      query_bytes: *const u8,
                                      query_len: size_t,
-                                     ctx: *const c_void) -> bool
+                                     ctx: *const OdohConfigContext) -> bool
 {
     use rand::rngs::StdRng;
 
@@ -819,11 +870,14 @@ pub extern "C" fn odoh_encrypt_query(enc_query_bytes: *mut *mut u8,
     let query_slice: &[u8] = unsafe {
         slice::from_raw_parts(query_bytes, query_len as usize)
     };
-    let config = ctx.cast::<*const ObliviousDoHConfig>();
-    let contents = unsafe { &(**config).contents };
+    let config = unsafe { (*ctx).into() };
 
     let message = ObliviousDoHMessagePlaintext::new(query_slice, /* padding */ 0);
-    let (enc_message, client_secret) = encrypt_query(&message, contents, &mut rng).unwrap();
+    let result = encrypt_query(&message, &config, &mut rng);
+    if result.is_err() {
+        return false;
+    }
+    let (enc_message, client_secret) = result.unwrap();
 
     let enc_query_result = compose(&enc_message);
     if enc_query_result.is_err() {

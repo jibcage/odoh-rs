@@ -17,7 +17,7 @@
                BlueprintIdentifier = "0411CF892739F1C7005AFCA2"
                BuildableName = "RustSourceMacOS"
                BlueprintName = "RustSourceMacOS"
-               ReferencedContainer = "container:odoh-hpke.xcodeproj">
+               ReferencedContainer = "container:odoh-proxy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -53,7 +53,7 @@
             BlueprintIdentifier = "0411CF892739F1C7005AFCA2"
             BuildableName = "RustSourceMacOS"
             BlueprintName = "RustSourceMacOS"
-            ReferencedContainer = "container:odoh-hpke.xcodeproj">
+            ReferencedContainer = "container:odoh-proxy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,0 +1,1301 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		0411CF892739F1C7005AFCA2 /* RustSourceMacOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0411CF8C2739F1C7005AFCA2 /* Build configuration list for PBXAggregateTarget "RustSourceMacOS" */;
+			buildPhases = (
+				0411CF8D2739F1CE005AFCA2 /* Build Rust Source */,
+			);
+			dependencies = (
+			);
+			name = RustSourceMacOS;
+			packageProductDependencies = (
+			);
+			productName = RustSource;
+		};
+		0411CF922739F45F005AFCA2 /* RustSourceiOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0411CF932739F45F005AFCA2 /* Build configuration list for PBXAggregateTarget "RustSourceiOS" */;
+			buildPhases = (
+				0411CF962739F46D005AFCA2 /* Build Rust Source */,
+			);
+			dependencies = (
+			);
+			name = RustSourceiOS;
+			productName = RustSourceiOS;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0402B4BE27411D8D006B79B2 /* libodoh_rs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04730822273FF9CA002D4356 /* libodoh_rs.a */; };
+		0462DA17273FD23100334C6F /* HPKEContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462DA16273FD23100334C6F /* HPKEContext.swift */; };
+		0462DA19273FDC5700334C6F /* SystemExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0462DA18273FDC5700334C6F /* SystemExtensions.framework */; };
+		0462DA1C273FDEE100334C6F /* SysextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462DA1A273FDE9000334C6F /* SysextDelegate.swift */; };
+		04713D37273FC1A4001FD1B8 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D36273FC1A4001FD1B8 /* Tests_iOS.swift */; };
+		04713D39273FC1A4001FD1B8 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D38273FC1A4001FD1B8 /* Tests_iOSLaunchTests.swift */; };
+		04713D43273FC1A4001FD1B8 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D42273FC1A4001FD1B8 /* Tests_macOS.swift */; };
+		04713D45273FC1A4001FD1B8 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D44273FC1A4001FD1B8 /* Tests_macOSLaunchTests.swift */; };
+		04713D46273FC1A4001FD1B8 /* odoh_proxy_app.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D1F273FC1A3001FD1B8 /* odoh_proxy_app.swift */; };
+		04713D47273FC1A4001FD1B8 /* odoh_proxy_app.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D1F273FC1A3001FD1B8 /* odoh_proxy_app.swift */; };
+		04713D48273FC1A4001FD1B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D20273FC1A3001FD1B8 /* ContentView.swift */; };
+		04713D49273FC1A4001FD1B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D20273FC1A3001FD1B8 /* ContentView.swift */; };
+		04713D4A273FC1A4001FD1B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04713D21273FC1A4001FD1B8 /* Assets.xcassets */; };
+		04713D4B273FC1A4001FD1B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04713D21273FC1A4001FD1B8 /* Assets.xcassets */; };
+		04713D5E273FC218001FD1B8 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04713D5D273FC218001FD1B8 /* NetworkExtension.framework */; platformFilter = maccatalyst; };
+		04713D61273FC218001FD1B8 /* DNSProxyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D60273FC218001FD1B8 /* DNSProxyProvider.swift */; };
+		04713D66273FC218001FD1B8 /* odoh-proxy-ios.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04713D5C273FC218001FD1B8 /* odoh-proxy-ios.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04713D78273FC63C001FD1B8 /* HTTPSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D77273FC63C001FD1B8 /* HTTPSupport.swift */; };
+		04730824273FFA36002D4356 /* DNSProxyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D60273FC218001FD1B8 /* DNSProxyProvider.swift */; };
+		04B9C3B4273FEAE3002EA546 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04713D5D273FC218001FD1B8 /* NetworkExtension.framework */; platformFilter = maccatalyst; };
+		04B9C3B9273FEAE3002EA546 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9C3B8273FEAE3002EA546 /* main.swift */; };
+		04B9C3C3273FEB27002EA546 /* org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 04B9C3B3273FEAE3002EA546 /* org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04B9C3C7273FEC0F002EA546 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04713D5D273FC218001FD1B8 /* NetworkExtension.framework */; };
+		04B9C3C8273FF5FB002EA546 /* HPKEContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462DA16273FD23100334C6F /* HPKEContext.swift */; };
+		04B9C3C9273FF601002EA546 /* HTTPSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04713D77273FC63C001FD1B8 /* HTTPSupport.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04713D33273FC1A4001FD1B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0411CF762739F17A005AFCA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04713D25273FC1A4001FD1B8;
+			remoteInfo = "odoh-proxy-app (iOS)";
+		};
+		04713D3F273FC1A4001FD1B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0411CF762739F17A005AFCA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04713D2A273FC1A4001FD1B8;
+			remoteInfo = "odoh-proxy-app (macOS)";
+		};
+		04713D64273FC218001FD1B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0411CF762739F17A005AFCA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04713D5B273FC218001FD1B8;
+			remoteInfo = "odoh-proxy";
+		};
+		049DF6FF273FF6DC00E22145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0411CF762739F17A005AFCA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0411CF892739F1C7005AFCA2;
+			remoteInfo = RustSourceMacOS;
+		};
+		04B9C3AD273FEAB2002EA546 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0411CF762739F17A005AFCA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04713D5B273FC218001FD1B8;
+			remoteInfo = "odoh-proxy";
+		};
+		04B9C3C4273FEB27002EA546 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0411CF762739F17A005AFCA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04B9C3B2273FEAE3002EA546;
+			remoteInfo = "odoh-proxy-macos";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04713D6A273FC218001FD1B8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				04713D66273FC218001FD1B8 /* odoh-proxy-ios.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04B9C3C6273FEB27002EA546 /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				04B9C3C3273FEB27002EA546 /* org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos.systemextension in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		044DDF532741814600F92847 /* odoh-rs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "odoh-rs.h"; path = "target/odoh-rs.h"; sourceTree = "<group>"; };
+		0462DA0D273FD04700334C6F /* odoh-proxy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "odoh-proxy-Bridging-Header.h"; sourceTree = "<group>"; };
+		0462DA16273FD23100334C6F /* HPKEContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPKEContext.swift; sourceTree = "<group>"; };
+		0462DA18273FDC5700334C6F /* SystemExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemExtensions.framework; path = System/Library/Frameworks/SystemExtensions.framework; sourceTree = SDKROOT; };
+		0462DA1A273FDE9000334C6F /* SysextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysextDelegate.swift; sourceTree = "<group>"; };
+		04713D1F273FC1A3001FD1B8 /* odoh_proxy_app.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = odoh_proxy_app.swift; sourceTree = "<group>"; };
+		04713D20273FC1A3001FD1B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04713D21273FC1A4001FD1B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04713D26273FC1A4001FD1B8 /* odoh-proxy-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "odoh-proxy-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04713D2B273FC1A4001FD1B8 /* odoh-proxy-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "odoh-proxy-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04713D2D273FC1A4001FD1B8 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		04713D32273FC1A4001FD1B8 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04713D36273FC1A4001FD1B8 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		04713D38273FC1A4001FD1B8 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		04713D3E273FC1A4001FD1B8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04713D42273FC1A4001FD1B8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		04713D44273FC1A4001FD1B8 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		04713D5C273FC218001FD1B8 /* odoh-proxy-ios.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "odoh-proxy-ios.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04713D5D273FC218001FD1B8 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		04713D60273FC218001FD1B8 /* DNSProxyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSProxyProvider.swift; sourceTree = "<group>"; };
+		04713D62273FC218001FD1B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04713D63273FC218001FD1B8 /* odoh_proxy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = odoh_proxy.entitlements; sourceTree = "<group>"; };
+		04713D77273FC63C001FD1B8 /* HTTPSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPSupport.swift; sourceTree = "<group>"; };
+		04730822273FF9CA002D4356 /* libodoh_rs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libodoh_rs.a; path = target/darwin/libodoh_rs.a; sourceTree = "<group>"; };
+		04730825273FFA5F002D4356 /* odoh_proxy_macos.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = odoh_proxy_macos.entitlements; sourceTree = "<group>"; };
+		04730828273FFB42002D4356 /* Info_macos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_macos.plist; sourceTree = "<group>"; };
+		049DF6FD273FF6D100E22145 /* libodoh_rs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libodoh_rs.a; path = "target/darwin/x86_64-apple-darwin/debug/libodoh_rs.a"; sourceTree = "<group>"; };
+		04B9C3B3273FEAE3002EA546 /* org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = "org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos.systemextension"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04B9C3B8273FEAE3002EA546 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04713D23273FC1A4001FD1B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D28273FC1A4001FD1B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0462DA19273FDC5700334C6F /* SystemExtensions.framework in Frameworks */,
+				04B9C3C7273FEC0F002EA546 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D2F273FC1A4001FD1B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D3B273FC1A4001FD1B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D59273FC218001FD1B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04713D5E273FC218001FD1B8 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04B9C3B0273FEAE3002EA546 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0402B4BE27411D8D006B79B2 /* libodoh_rs.a in Frameworks */,
+				04B9C3B4273FEAE3002EA546 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0411CF752739F17A005AFCA2 = {
+			isa = PBXGroup;
+			children = (
+				04713D1E273FC1A3001FD1B8 /* Shared */,
+				04713D2C273FC1A4001FD1B8 /* macOS */,
+				04713D35273FC1A4001FD1B8 /* Tests iOS */,
+				04713D41273FC1A4001FD1B8 /* Tests macOS */,
+				04713D5F273FC218001FD1B8 /* odoh-proxy */,
+				0462DA11273FD0CE00334C6F /* Supporting Files */,
+				0411CF802739F17A005AFCA2 /* Products */,
+				0411CFAA2739FD24005AFCA2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0411CF802739F17A005AFCA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04713D26273FC1A4001FD1B8 /* odoh-proxy-app.app */,
+				04713D2B273FC1A4001FD1B8 /* odoh-proxy-app.app */,
+				04713D32273FC1A4001FD1B8 /* Tests iOS.xctest */,
+				04713D3E273FC1A4001FD1B8 /* Tests macOS.xctest */,
+				04713D5C273FC218001FD1B8 /* odoh-proxy-ios.appex */,
+				04B9C3B3273FEAE3002EA546 /* org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos.systemextension */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0411CFAA2739FD24005AFCA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				049DF6FD273FF6D100E22145 /* libodoh_rs.a */,
+				04730822273FF9CA002D4356 /* libodoh_rs.a */,
+				0462DA18273FDC5700334C6F /* SystemExtensions.framework */,
+				04713D5D273FC218001FD1B8 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0462DA11273FD0CE00334C6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				044DDF532741814600F92847 /* odoh-rs.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04713D1E273FC1A3001FD1B8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				04713D1F273FC1A3001FD1B8 /* odoh_proxy_app.swift */,
+				04713D20273FC1A3001FD1B8 /* ContentView.swift */,
+				0462DA1A273FDE9000334C6F /* SysextDelegate.swift */,
+				04713D21273FC1A4001FD1B8 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		04713D2C273FC1A4001FD1B8 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				04713D2D273FC1A4001FD1B8 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		04713D35273FC1A4001FD1B8 /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				04713D36273FC1A4001FD1B8 /* Tests_iOS.swift */,
+				04713D38273FC1A4001FD1B8 /* Tests_iOSLaunchTests.swift */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		04713D41273FC1A4001FD1B8 /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				04713D42273FC1A4001FD1B8 /* Tests_macOS.swift */,
+				04713D44273FC1A4001FD1B8 /* Tests_macOSLaunchTests.swift */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		04713D5F273FC218001FD1B8 /* odoh-proxy */ = {
+			isa = PBXGroup;
+			children = (
+				04B9C3B8273FEAE3002EA546 /* main.swift */,
+				04713D60273FC218001FD1B8 /* DNSProxyProvider.swift */,
+				04713D77273FC63C001FD1B8 /* HTTPSupport.swift */,
+				0462DA16273FD23100334C6F /* HPKEContext.swift */,
+				04713D62273FC218001FD1B8 /* Info.plist */,
+				04730828273FFB42002D4356 /* Info_macos.plist */,
+				04713D63273FC218001FD1B8 /* odoh_proxy.entitlements */,
+				04730825273FFA5F002D4356 /* odoh_proxy_macos.entitlements */,
+				0462DA0D273FD04700334C6F /* odoh-proxy-Bridging-Header.h */,
+			);
+			path = "odoh-proxy";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04713D25273FC1A4001FD1B8 /* odoh-proxy-app (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04713D54273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "odoh-proxy-app (iOS)" */;
+			buildPhases = (
+				04713D22273FC1A4001FD1B8 /* Sources */,
+				04713D23273FC1A4001FD1B8 /* Frameworks */,
+				04713D24273FC1A4001FD1B8 /* Resources */,
+				04713D6A273FC218001FD1B8 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04713D65273FC218001FD1B8 /* PBXTargetDependency */,
+				04B9C3AE273FEAB2002EA546 /* PBXTargetDependency */,
+			);
+			name = "odoh-proxy-app (iOS)";
+			productName = "odoh-proxy-app (iOS)";
+			productReference = 04713D26273FC1A4001FD1B8 /* odoh-proxy-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04713D2A273FC1A4001FD1B8 /* odoh-proxy-app (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04713D55273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "odoh-proxy-app (macOS)" */;
+			buildPhases = (
+				04713D27273FC1A4001FD1B8 /* Sources */,
+				04713D28273FC1A4001FD1B8 /* Frameworks */,
+				04713D29273FC1A4001FD1B8 /* Resources */,
+				04B9C3C6273FEB27002EA546 /* Embed System Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04B9C3C5273FEB27002EA546 /* PBXTargetDependency */,
+			);
+			name = "odoh-proxy-app (macOS)";
+			productName = "odoh-proxy-app (macOS)";
+			productReference = 04713D2B273FC1A4001FD1B8 /* odoh-proxy-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04713D31273FC1A4001FD1B8 /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04713D56273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				04713D2E273FC1A4001FD1B8 /* Sources */,
+				04713D2F273FC1A4001FD1B8 /* Frameworks */,
+				04713D30273FC1A4001FD1B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04713D34273FC1A4001FD1B8 /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 04713D32273FC1A4001FD1B8 /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		04713D3D273FC1A4001FD1B8 /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04713D57273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				04713D3A273FC1A4001FD1B8 /* Sources */,
+				04713D3B273FC1A4001FD1B8 /* Frameworks */,
+				04713D3C273FC1A4001FD1B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04713D40273FC1A4001FD1B8 /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 04713D3E273FC1A4001FD1B8 /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		04713D5B273FC218001FD1B8 /* odoh-proxy-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04713D67273FC218001FD1B8 /* Build configuration list for PBXNativeTarget "odoh-proxy-ios" */;
+			buildPhases = (
+				04713D58273FC218001FD1B8 /* Sources */,
+				04713D59273FC218001FD1B8 /* Frameworks */,
+				04713D5A273FC218001FD1B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "odoh-proxy-ios";
+			packageProductDependencies = (
+			);
+			productName = "odoh-proxy";
+			productReference = 04713D5C273FC218001FD1B8 /* odoh-proxy-ios.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		04B9C3B2273FEAE3002EA546 /* odoh-proxy-macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04B9C3BF273FEAE3002EA546 /* Build configuration list for PBXNativeTarget "odoh-proxy-macos" */;
+			buildPhases = (
+				04B9C3AF273FEAE3002EA546 /* Sources */,
+				04B9C3B0273FEAE3002EA546 /* Frameworks */,
+				04B9C3B1273FEAE3002EA546 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				049DF700273FF6DC00E22145 /* PBXTargetDependency */,
+			);
+			name = "odoh-proxy-macos";
+			packageProductDependencies = (
+			);
+			productName = "odoh-proxy-macos";
+			productReference = 04B9C3B3273FEAE3002EA546 /* org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos.systemextension */;
+			productType = "com.apple.product-type.system-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0411CF762739F17A005AFCA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					0411CF892739F1C7005AFCA2 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					0411CF922739F45F005AFCA2 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					04713D25273FC1A4001FD1B8 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					04713D2A273FC1A4001FD1B8 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					04713D31273FC1A4001FD1B8 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 04713D25273FC1A4001FD1B8;
+					};
+					04713D3D273FC1A4001FD1B8 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 04713D2A273FC1A4001FD1B8;
+					};
+					04713D5B273FC218001FD1B8 = {
+						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
+					};
+					04B9C3B2273FEAE3002EA546 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 0411CF792739F17A005AFCA2 /* Build configuration list for PBXProject "odoh-proxy" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0411CF752739F17A005AFCA2;
+			packageReferences = (
+			);
+			productRefGroup = 0411CF802739F17A005AFCA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0411CF892739F1C7005AFCA2 /* RustSourceMacOS */,
+				0411CF922739F45F005AFCA2 /* RustSourceiOS */,
+				04713D25273FC1A4001FD1B8 /* odoh-proxy-app (iOS) */,
+				04713D2A273FC1A4001FD1B8 /* odoh-proxy-app (macOS) */,
+				04713D31273FC1A4001FD1B8 /* Tests iOS */,
+				04713D3D273FC1A4001FD1B8 /* Tests macOS */,
+				04713D5B273FC218001FD1B8 /* odoh-proxy-ios */,
+				04B9C3B2273FEAE3002EA546 /* odoh-proxy-macos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04713D24273FC1A4001FD1B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04713D4A273FC1A4001FD1B8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D29273FC1A4001FD1B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04713D4B273FC1A4001FD1B8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D30273FC1A4001FD1B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D3C273FC1A4001FD1B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D5A273FC218001FD1B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04B9C3B1273FEAE3002EA546 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0411CF8D2739F1CE005AFCA2 /* Build Rust Source */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Rust Source";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/include/odoh-rs.h",
+				"$(DERIVED_FILE_DIR)/lib/macos/libodoh_rs.a",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nDIRNAME=\"odoh-hpke\"\nCARGO=\"/Users/jack/.cargo/bin/cargo\"\n\ncd \"${PROJECT_DIR}\"\n\n$CARGO build --target aarch64-apple-darwin --target-dir target/darwin\n$CARGO build --target x86_64-apple-darwin --target-dir target/darwin\nlipo -create -output \"target/darwin/libodoh_rs.a\" -arch arm64 target/darwin/aarch64-apple-darwin/debug/libodoh_rs.a -arch x86_64 target/darwin/x86_64-apple-darwin/debug/libodoh_rs.a\n\ncp target/odoh-rs.h \"${SCRIPT_OUTPUT_FILE_0}\"\ncp target/darwin/libodoh_rs.a \"${SCRIPT_OUTPUT_FILE_1}\"\n";
+		};
+		0411CF962739F46D005AFCA2 /* Build Rust Source */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Rust Source";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/include/odoh-rs.h",
+				"$(DERIVED_FILE_DIR)/lib/macos/libodoh_rs.a",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nDIRNAME=\"odoh-hpke\"\nCARGO=\"/Users/jack/.cargo/bin/cargo\"\n\ncd ${PROJECT_DIR}\n\n$CARGO build --target aarch64-apple-ios --target-dir target/ios\n\ncp target/odoh-rs.h ${SCRIPT_OUTPUT_FILE_0}\ncp target/ios/aarch64-apple-ios/debug/libodoh_rs.a ${SCRIPT_OUTPUT_FILE_1}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04713D22273FC1A4001FD1B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04713D48273FC1A4001FD1B8 /* ContentView.swift in Sources */,
+				04713D46273FC1A4001FD1B8 /* odoh_proxy_app.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D27273FC1A4001FD1B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0462DA1C273FDEE100334C6F /* SysextDelegate.swift in Sources */,
+				04713D49273FC1A4001FD1B8 /* ContentView.swift in Sources */,
+				04713D47273FC1A4001FD1B8 /* odoh_proxy_app.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D2E273FC1A4001FD1B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04713D39273FC1A4001FD1B8 /* Tests_iOSLaunchTests.swift in Sources */,
+				04713D37273FC1A4001FD1B8 /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D3A273FC1A4001FD1B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04713D45273FC1A4001FD1B8 /* Tests_macOSLaunchTests.swift in Sources */,
+				04713D43273FC1A4001FD1B8 /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04713D58273FC218001FD1B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0462DA17273FD23100334C6F /* HPKEContext.swift in Sources */,
+				04713D61273FC218001FD1B8 /* DNSProxyProvider.swift in Sources */,
+				04713D78273FC63C001FD1B8 /* HTTPSupport.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04B9C3AF273FEAE3002EA546 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04B9C3B9273FEAE3002EA546 /* main.swift in Sources */,
+				04B9C3C9273FF601002EA546 /* HTTPSupport.swift in Sources */,
+				04B9C3C8273FF5FB002EA546 /* HPKEContext.swift in Sources */,
+				04730824273FFA36002D4356 /* DNSProxyProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04713D34273FC1A4001FD1B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04713D25273FC1A4001FD1B8 /* odoh-proxy-app (iOS) */;
+			targetProxy = 04713D33273FC1A4001FD1B8 /* PBXContainerItemProxy */;
+		};
+		04713D40273FC1A4001FD1B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04713D2A273FC1A4001FD1B8 /* odoh-proxy-app (macOS) */;
+			targetProxy = 04713D3F273FC1A4001FD1B8 /* PBXContainerItemProxy */;
+		};
+		04713D65273FC218001FD1B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04713D5B273FC218001FD1B8 /* odoh-proxy-ios */;
+			targetProxy = 04713D64273FC218001FD1B8 /* PBXContainerItemProxy */;
+		};
+		049DF700273FF6DC00E22145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0411CF892739F1C7005AFCA2 /* RustSourceMacOS */;
+			targetProxy = 049DF6FF273FF6DC00E22145 /* PBXContainerItemProxy */;
+		};
+		04B9C3AE273FEAB2002EA546 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04713D5B273FC218001FD1B8 /* odoh-proxy-ios */;
+			targetProxy = 04B9C3AD273FEAB2002EA546 /* PBXContainerItemProxy */;
+		};
+		04B9C3C5273FEB27002EA546 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04B9C3B2273FEAE3002EA546 /* odoh-proxy-macos */;
+			targetProxy = 04B9C3C4273FEB27002EA546 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0411CF842739F17A005AFCA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0411CF852739F17A005AFCA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0411CF8A2739F1C7005AFCA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0411CF8B2739F1C7005AFCA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0411CF942739F45F005AFCA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0411CF952739F45F005AFCA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		04713D4C273FC1A4001FD1B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app";
+				PRODUCT_NAME = "odoh-proxy-app";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04713D4D273FC1A4001FD1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app";
+				PRODUCT_NAME = "odoh-proxy-app";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04713D4E273FC1A4001FD1B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app";
+				PRODUCT_NAME = "odoh-proxy-app";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		04713D4F273FC1A4001FD1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app";
+				PRODUCT_NAME = "odoh-proxy-app";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		04713D50273FC1A4001FD1B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "odoh-proxy-app (iOS)";
+			};
+			name = Debug;
+		};
+		04713D51273FC1A4001FD1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "odoh-proxy-app (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04713D52273FC1A4001FD1B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "odoh-proxy-app (macOS)";
+			};
+			name = Debug;
+		};
+		04713D53273FC1A4001FD1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "odoh-proxy-app (macOS)";
+			};
+			name = Release;
+		};
+		04713D68273FC218001FD1B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "odoh-proxy/odoh_proxy.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "odoh-proxy/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "odoh-proxy-ios";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/target/ios/aarch64-apple-ios/debug",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app.odoh-proxy-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "odoh-proxy/odoh-proxy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04713D69273FC218001FD1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "odoh-proxy/odoh_proxy.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "odoh-proxy/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "odoh-proxy-ios";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/target/ios/aarch64-apple-ios/debug",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app.odoh-proxy-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "odoh-proxy/odoh-proxy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04B9C3C0273FEAE3002EA546 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "odoh-proxy/odoh_proxy_macos.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/target/";
+				INFOPLIST_FILE = "odoh-proxy/Info_macos.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "odoh-proxy-macos";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/target/darwin",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos";
+				PRODUCT_NAME = "$(inherited)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "odoh-proxy/odoh-proxy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		04B9C3C1273FEAE3002EA546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "odoh-proxy/odoh_proxy_macos.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z6B37YKHFD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/target/";
+				INFOPLIST_FILE = "odoh-proxy/Info_macos.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "odoh-proxy-macos";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/target/darwin",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kbiggs.testing.odoh-proxy-app.odoh-proxy-macos";
+				PRODUCT_NAME = "$(inherited)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "odoh-proxy/odoh-proxy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0411CF792739F17A005AFCA2 /* Build configuration list for PBXProject "odoh-proxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0411CF842739F17A005AFCA2 /* Debug */,
+				0411CF852739F17A005AFCA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0411CF8C2739F1C7005AFCA2 /* Build configuration list for PBXAggregateTarget "RustSourceMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0411CF8A2739F1C7005AFCA2 /* Debug */,
+				0411CF8B2739F1C7005AFCA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0411CF932739F45F005AFCA2 /* Build configuration list for PBXAggregateTarget "RustSourceiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0411CF942739F45F005AFCA2 /* Debug */,
+				0411CF952739F45F005AFCA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04713D54273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "odoh-proxy-app (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04713D4C273FC1A4001FD1B8 /* Debug */,
+				04713D4D273FC1A4001FD1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04713D55273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "odoh-proxy-app (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04713D4E273FC1A4001FD1B8 /* Debug */,
+				04713D4F273FC1A4001FD1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04713D56273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04713D50273FC1A4001FD1B8 /* Debug */,
+				04713D51273FC1A4001FD1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04713D57273FC1A4001FD1B8 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04713D52273FC1A4001FD1B8 /* Debug */,
+				04713D53273FC1A4001FD1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04713D67273FC218001FD1B8 /* Build configuration list for PBXNativeTarget "odoh-proxy-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04713D68273FC218001FD1B8 /* Debug */,
+				04713D69273FC218001FD1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04B9C3BF273FEAE3002EA546 /* Build configuration list for PBXNativeTarget "odoh-proxy-macos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04B9C3C0273FEAE3002EA546 /* Debug */,
+				04B9C3C1273FEAE3002EA546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0411CF762739F17A005AFCA2 /* Project object */;
+}

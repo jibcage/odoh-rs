@@ -14,12 +14,27 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>odoh-hpke-ios.xcscheme_^#shared#^_</key>
+		<key>odoh-proxy-app (iOS).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>odoh-proxy-app (macOS).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>odoh-proxy-ios.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>odoh-proxy-macos.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>odoh-hpke-macos.xcscheme_^#shared#^_</key>
+		<key>odoh-proxy.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
